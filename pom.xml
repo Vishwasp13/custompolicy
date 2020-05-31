@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>b4d7880b-e688-420d-a0a1-bb7e444abd81</groupId>
+    <groupId>YOUR_ORG_ID</groupId>
     <artifactId>ads-delivery</artifactId>
     <version>1.0.0</version>
 
@@ -13,7 +13,7 @@
 
     <properties>
         <mule.maven.plugin.version>3.3.6</mule.maven.plugin.version>
-        <exchange.url>https://maven.anypoint.mulesoft.com/api/v1/organizations/b4d7880b-e688-420d-a0a1-bb7e444abd81/maven</exchange.url>
+        <exchange.url>https://maven.anypoint.mulesoft.com/api/v1/organizations/YOUR_ORG_ID/maven</exchange.url>
         <http.policy.transform.extension>3.1.0</http.policy.transform.extension>
     </properties>
 
