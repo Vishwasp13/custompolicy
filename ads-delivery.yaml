@@ -1,0 +1,26 @@
+id: Ads Delivery
+name: Ads Delivery
+description: Policy to restrict ads based on subscription
+category: Custom
+type: custom
+resourceLevelSupported: true
+encryptionSupported: false
+standalone: true
+requiredCharacteristics: []
+providedCharacteristics: []
+configuration:
+  - propertyName: promotionalContent
+    name: Add Promotional Content
+    description: If enabled, the policy adds promotional content
+    type: boolean
+    optional: true
+    defaultValue: false
+  - propertyName: promotionalContentCondition
+    name: Condition on which promotional content should be rendered
+    description: Dataweave expression to determine the condition for applying promotions
+    type: expression
+    optional: true
+    sensitive: false
+    allowMultiple: false
+    dependsOnKey: promotionalContent
+    dependsOnValue: true

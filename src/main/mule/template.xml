@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns="http://www.mulesoft.org/schema/mule/core"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:http-policy="http://www.mulesoft.org/schema/mule/http-policy"
+      xmlns:http-transform="http://www.mulesoft.org/schema/mule/http-policy-transform"
+      xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+               http://www.mulesoft.org/schema/mule/http-policy http://www.mulesoft.org/schema/mule/http-policy/current/mule-http-policy.xsd
+               http://www.mulesoft.org/schema/mule/http-policy-transform http://www.mulesoft.org/schema/mule/http-policy-transform/current/mule-http-policy-transform.xsd">
+
+
+    <http-policy:proxy name="{{{policyId}}}-custom-policy">
+        <http-policy:source>
+			
+			{{#if promotionalContent}}
+			   <set-variable variableName="enablePromotionalContent" value="{{{promotionalContentCondition}}}"/>
+			{{/if}}
+            
+            
+            <http-policy:execute-next/>
+			
+			<set-variable variableName="content" value="#[payload]"/>
+            <http-transform:set-response statusCode="201">
+            	 
+            	 <http-transform:body>#[output application/json --- (if(vars.enablePromotionalContent) vars.content else (vars.content - 'promotionalContent'))]</http-transform:body>
+                <http-transform:headers>#[ {'PromoPolicy': 'Applied'} ]</http-transform:headers>
+            </http-transform:set-response>
+
+        </http-policy:source>
+    </http-policy:proxy>
+</mule>
